@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prueba1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhiguera <mhiguera@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 13:42:30 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/09/30 14:06:23 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/09/30 18:09:22 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
 #define row 10
 #define col 20
 
-// Caracteres para representar los elementos en el mapa
-#define P 'P'  // Jugador
-#define C 'C'  // Moneda
-#define E 'E'  // Salida
-#define wall '1' // Pared
-#define floor '0' // Suelo
+#   define wall '1'
+#   define floor '0'
+#   define E 'E'
+#   define P 'P'
+#   define C  'C'
 
 // Función para imprimir el mapa
 void printMap(char map[row][col])
@@ -31,14 +30,11 @@ void printMap(char map[row][col])
     int j;
     
     i = 0;
-    j = 0;
     while (i < row) 
     {
+        j = 0;
         while (j < col) 
-        {
-            printf("%c ", map[i][j]);
-            j++;
-        }
+            printf("%c ", map[i][j++]);
         printf("\n");
         i++;
     }
@@ -61,7 +57,6 @@ int main() {
     int playerX = 1; // Posición inicial del jugador (fila)
     int playerY = 1; // Posición inicial del jugador (columna)
 
-    // Bucle principal del juego
     while (1) {
         system("clear"); // Limpiar la pantalla (solo en sistemas Unix/Linux)
 
