@@ -6,12 +6,14 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 13:42:30 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/09/30 18:09:22 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/09/30 19:08:10 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "get_next_line/get_next_line.h"
+#include <fcntl.h>
 
 // Definición del tamaño del mapa
 #define row 10
@@ -40,7 +42,48 @@ void printMap(char map[row][col])
     }
 }
 
+void f(void)
+{
+    system("leaks -q a.out");
+}
+
 int main() {
+
+    atexit(f);
+    char **file;
+    int filesize;
+    int fd;
+    char *tmp;
+    int i;
+
+    tmp = "holi";
+    filesize = -1;
+    i = 0;
+    fd = open("map1.ber", O_RDONLY);
+    while (tmp)
+    {
+        filesize++;
+        tmp = get_next_line(fd);
+        free(tmp);
+    }
+    file = malloc(sizeof(char *) * (filesize + 1));
+    if (!file)
+        return (0);
+    close(fd);
+    fd = open("map1.ber", O_RDONLY);
+    while (i < filesize)
+    {
+        file[i] = get_next_line(fd);
+        printf("%s", file[i]);
+        i++;
+        
+    }
+    printf("%d", filesize);
+    exit(0);
+}
+
+/*
+
     char map[row][col] = {
         "11111111111111111111",
         "10000000000000000001",
@@ -72,15 +115,11 @@ int main() {
             break;
         }
 
-        // Pide al jugador que ingrese una dirección (w/a/s/d)
         char movimiento;
         printf("Ingrese una dirección (w/a/s/d): ");
         scanf(" %c", &movimiento);
-
-        // Borra la posición actual del jugador
         map[playerX][playerY] = floor;
 
-        // Actualiza la posición del jugador en función de la dirección ingresada
         switch (movimiento) {
             case 'w':
                 if (map[playerX - 1][playerY] != wall)
@@ -105,3 +144,4 @@ int main() {
 
     return 0;
 }
+*/
