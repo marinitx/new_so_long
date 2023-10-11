@@ -6,18 +6,14 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 13:42:30 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/09/30 19:08:10 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/01 18:44:25 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "get_next_line/get_next_line.h"
+#include "gnl/get_next_line.h"
 #include <fcntl.h>
-
-// Definición del tamaño del mapa
-#define row 10
-#define col 20
 
 #   define wall '1'
 #   define floor '0'
@@ -26,7 +22,7 @@
 #   define C  'C'
 
 // Función para imprimir el mapa
-void printMap(char map[row][col])
+/*void printMap(char map[row][col])
 {
     int i;
     int j;
@@ -41,7 +37,7 @@ void printMap(char map[row][col])
         i++;
     }
 }
-
+*/
 void f(void)
 {
     system("leaks -q a.out");
@@ -54,11 +50,15 @@ int main() {
     int filesize;
     int fd;
     char *tmp;
-    int i;
+    int row;
+    int col;
+    int j;
 
     tmp = "holi";
+    col = 0;
     filesize = -1;
-    i = 0;
+    row = 0;
+    j = 0;
     fd = open("map1.ber", O_RDONLY);
     while (tmp)
     {
@@ -71,12 +71,20 @@ int main() {
         return (0);
     close(fd);
     fd = open("map1.ber", O_RDONLY);
-    while (i < filesize)
+    // Imprime el mapa
+    while (row < filesize)
     {
-        file[i] = get_next_line(fd);
-        printf("%s", file[i]);
+        file[row] = get_next_line(fd);
+        printf("%s", file[row]);
         i++;
         
+    }
+    close(fd);
+    fd = open("map1.ber", O_RDONLY);
+    while (row < filesize)
+    {
+        while (file[row][col] == '1')
+            j++;
     }
     printf("%d", filesize);
     exit(0);
