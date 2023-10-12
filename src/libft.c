@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhiguera <mhiguera@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:00:36 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/09/25 10:02:55 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:55:20 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Reads the string and counts every char, returns the counter
 int ft_strlen(char *str)
 {
     int i;
@@ -20,4 +21,21 @@ int ft_strlen(char *str)
     while (str[i])
         i++;
     return (i);
+}
+
+// Searchs for the first occurrence of a char
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }
