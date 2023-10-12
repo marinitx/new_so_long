@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 13:42:30 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/01 18:44:25 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:12:59 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,7 @@
 #   define P 'P'
 #   define C  'C'
 
-// Función para imprimir el mapa
-/*void printMap(char map[row][col])
-{
-    int i;
-    int j;
-    
-    i = 0;
-    while (i < row) 
-    {
-        j = 0;
-        while (j < col) 
-            printf("%c ", map[i][j++]);
-        printf("\n");
-        i++;
-    }
-}
-*/
+/*
 void f(void)
 {
     system("leaks -q a.out");
@@ -53,6 +37,7 @@ int main() {
     int row;
     int col;
     int j;
+    int i;
 
     tmp = "holi";
     col = 0;
@@ -76,7 +61,7 @@ int main() {
     {
         file[row] = get_next_line(fd);
         printf("%s", file[row]);
-        i++;
+        row++;
         
     }
     close(fd);
@@ -89,6 +74,7 @@ int main() {
     printf("%d", filesize);
     exit(0);
 }
+*/
 
 /*
 
