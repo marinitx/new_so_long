@@ -6,11 +6,11 @@
 #    By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 17:54:21 by mhiguera          #+#    #+#              #
-#    Updated: 2023/10/12 18:53:25 by mhiguera         ###   ########.fr        #
+#    Updated: 2023/10/15 13:07:59 by mhiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = so_long.c gnl/get_next_line.c gnl/get_next_line_utils.c
+SRC = src/so_long.c gnl/get_next_line.c gnl/get_next_line_utils.c
 OBJS = $(SRC:.c=.o)
 C = gcc -c
 FLAGS = -Wall -Wextra -Werror
@@ -23,7 +23,7 @@ RM =  /bin/rm -f
 #.SILENT:
 $(NAME): $(OBJS)
 	$(C) $(FLAGS) $(SRC)
-	gcc $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	gcc $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 all: $(NAME)
 
