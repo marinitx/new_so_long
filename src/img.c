@@ -1,41 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.c                                            :+:      :+:    :+:   */
+/*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 10:00:36 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/15 16:57:36 by mhiguera         ###   ########.fr       */
+/*   Created: 2023/10/15 16:39:25 by mhiguera          #+#    #+#             */
+/*   Updated: 2023/10/15 17:05:37 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-// Reads the string and counts every char, returns the counter
-int ft_strlen(char *str)
+void *init_xpm(t_map *map, char *str)
 {
-    int i;
-    
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
-}
-
-// Searchs for the first occurrence of a char
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
-	}
-	if (s[i] == (char)c)
-		return ((char *)&s[i]);
-	return (NULL);
+    char *route;
+    img = mlx_xpm_file_to_image(map->mlx, route)
 }

@@ -6,38 +6,37 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/15 15:35:27 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:33:10 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
 //Creates with malloc a 2d char map as found in file
-void read_map(char *argv, t_map *map)
+void read_map(char *argv)
 {
-    int filesize;
+    int height;
     int fd;
     char *tmp;
+    char **map;
     int row;
-   // int col;
-   // int j;
 
     tmp = "holi";
-    filesize = -1;
+    height = -1;
     row = 0;
     fd = open(argv, O_RDONLY);
     while (tmp)
     {
-        filesize++;
+        height++;
         tmp = get_next_line(fd);
         free(tmp);
     }
-    map = malloc(sizeof(char *) * (filesize + 1));
+    map = malloc(sizeof(char *) * (height + 1));
     if (!map)
-        printf("%s", "\nFile not found!");
+        ft_error("\nFile not found!");
     close(fd);
-    fd = open("map1.ber", O_RDONLY);
-    while (row < filesize)
+    fd = open(argv, O_RDONLY);
+    while (row < height)
     {
         map[row] = get_next_line(fd);
         printf("%s", map[row]);
@@ -47,11 +46,42 @@ void read_map(char *argv, t_map *map)
     exit(0);
 }
 
-int main (int argc, char *argv[])
+void	ft_error(char *str)
 {
-    t_map   map;
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+/*
+int measure_map(char *argv)
+{
+    int fd;
+    int height;
+    char *line;
     
+    fd = open(argv, O_RDONLY);
+    line = get_next_line(fd);
+    map.height = 0;
+    map.width = ft_strlen(line) - 1;
+    
+    while (line)
+    {
+        line = get_next_line(fd);
+        map.line
+        
+    }
+}
+*/
+int main (int argc, char *argv[])
+{   
     if (argc == 2)
-        read_map(argv[1], &map);
+        read_map(argv[1]);
+    else
+        ft_error("\nInvalid number of arguments");
     return (0);
 }
