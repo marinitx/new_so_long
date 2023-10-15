@@ -6,77 +6,26 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/12 17:52:20 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/15 15:35:27 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "gnl/get_next_line.h"
-
-//Counts the number of lines by '\n'
-/*static int count_lines(char *file)
-{
-    int i;
-    int lines;
-
-    i = 0;
-    while (file[i] != '\0')
-    {
-        if ft_strchr(file[i], '\n')
-        {
-            lines++;
-        }
-        i++;
-    }
-    return (lines);
-}
-*/
-
- int check_map(char **map, int filesize)
-    {
-        int row;
-        int col;
-        int lencol;
-
-        row = 0;
-        col = 0;
-        lencol = ft_strlen(map[row]);
-        while (row < filesize)
-        {
-            while (map[row][col] != '\n')
-            {
-                if ((map[1][col] != '\n'))
-                {
-                    printf("%d", col);
-                    //printf("%s", "error en el mapa");
-                }
-                col++;
-            }
-            row++;
-        }
-        printf("\n%d\n", row);
-        printf("\n%d\n", col);
-        return(0);
-    }
-
+#include "../inc/so_long.h"
 
 //Creates with malloc a 2d char map as found in file
-int read_map(char *file)
+void read_map(char *argv, t_map *map)
 {
-    char **map;
     int filesize;
     int fd;
     char *tmp;
     int row;
-    int col;
-    int j;
+   // int col;
+   // int j;
 
     tmp = "holi";
     filesize = -1;
-    fd = open("map1.ber", O_RDONLY);
+    row = 0;
+    fd = open(argv, O_RDONLY);
     while (tmp)
     {
         filesize++;
@@ -85,40 +34,24 @@ int read_map(char *file)
     }
     map = malloc(sizeof(char *) * (filesize + 1));
     if (!map)
-        return (0);
+        printf("%s", "\nFile not found!");
     close(fd);
-    return (filesize);
-}
-
-char save_map(char *file)
-{
-    int row;
-    int col;
-    int filesize;
-    int j;
-    int fd;
-    char **map;
-
-    row = 0;
-    col = 0;
-    j = 0;
-    filesize = read_map(file);
     fd = open("map1.ber", O_RDONLY);
     while (row < filesize)
     {
         map[row] = get_next_line(fd);
         printf("%s", map[row]);
         row++;
-        
     }
     close(fd);
-    printf("%d", filesize);
-    check_map(map, filesize);
     exit(0);
 }
 
-int main ()
+int main (int argc, char *argv[])
 {
-    save_map("map1.ber");
+    t_map   map;
+    
+    if (argc == 2)
+        read_map(argv[1], &map);
     return (0);
 }
