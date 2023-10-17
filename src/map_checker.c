@@ -3,23 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mhiguera <mhiguera@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/15 17:33:10 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:12:42 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
+//Checks if every border is closed by walls (1)
+void check_borders(char **map, int height)
+{
+    int row;
+    int col;
+    int width;
+
+    row = 0;
+    col = 0;
+    width = 8; //temporary
+    while (map)
+    {
+        if (row == 0 || row == height - 1)
+        {
+            while (map[row][col] != '\n')
+            {
+                if (map[row][col] != '1')
+                    ft_error("The map is not surrounded by walls!");
+                col++;
+            }
+        }
+        if ((row > 0) && (row < height - 1))
+        {
+            if (map[row][0] != '1' || map[row][width] != '1')
+                ft_error("The map is not surrounded by walls!");
+        }
+        row++;
+    }
+    
+}
+
 //Creates with malloc a 2d char map as found in file
 void read_map(char *argv)
 {
-    int height;
     int fd;
     char *tmp;
-    char **map;
     int row;
+    char **map;
+    int height;
 
     tmp = "holi";
     height = -1;
@@ -42,6 +73,7 @@ void read_map(char *argv)
         printf("%s", map[row]);
         row++;
     }
+    check_borders(map, height);
     close(fd);
     exit(0);
 }
@@ -61,7 +93,7 @@ void	ft_error(char *str)
 int measure_map(char *argv)
 {
     int fd;
-    int height;
+    t_map map;
     char *line;
     
     fd = open(argv, O_RDONLY);
