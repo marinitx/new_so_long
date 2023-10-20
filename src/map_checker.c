@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/17 11:12:42 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:52:01 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,17 @@ void read_map(char *argv)
     exit(0);
 }
 
+void	check_extension(char *argv)
+{
+	int		start;
+	char	*extension;
+
+	start = ft_strlen(argv) - 4;
+	extension = ft_substr(argv, start, 4);
+	if (ft_strcmp(".ber", extension) != 0)
+		ft_error("The extension is not .ber!");
+}
+
 void	ft_error(char *str)
 {
 	int i;
@@ -112,7 +123,7 @@ int measure_map(char *argv)
 int main (int argc, char *argv[])
 {   
     if (argc == 2)
-        read_map(argv[1]);
+        check_extension(argv[1]);
     else
         ft_error("\nInvalid number of arguments");
     return (0);
