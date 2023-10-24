@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 12:39:18 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/12 13:42:26 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:33:16 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_save(int fd, char *aux)
 			return (NULL);
 		}
 		bufstr[save_read] = '\0';
-		aux = ft_strjoin(aux, bufstr);
+		aux = ft_strjoin2(aux, bufstr);
 	}
 	free(bufstr);
 	return (aux);

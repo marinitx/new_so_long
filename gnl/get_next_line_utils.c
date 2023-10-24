@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhiguera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 13:56:48 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/04/26 18:47:05 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:34:56 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*ft_strchr(const char *s, int c)
@@ -31,7 +32,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin2(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -46,19 +47,19 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if (!s1 || !s2)
 		return (NULL);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof (char));
+	str = malloc((ft_strlen2(s1) + ft_strlen2(s2) + 1) * sizeof (char));
 	if (str == (0))
 		return (0);
 	while (s1[++i] != '\0')
 		str[i] = s1[i];
 	while (s2[++j] != '\0')
 		str[i + j] = s2[j];
-	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	str[ft_strlen2(s1) + ft_strlen2(s2)] = '\0';
 	free(s1);
 	return (str);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen2(const char *s)
 {
 	int	i;
 
@@ -112,7 +113,7 @@ char	*ft_extra(char *aux)
 		free(aux);
 		return (NULL);
 	}
-	ret = malloc(sizeof(char) * (ft_strlen(aux) - i + 1));
+	ret = malloc(sizeof(char) * (ft_strlen2(aux) - i + 1));
 	if (!ret)
 	{
 		free(aux);

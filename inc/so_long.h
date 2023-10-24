@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhiguera <mhiguera@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/17 11:00:40 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:54:51 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "../gnl/get_next_line.h"
+#include "../libft/libft.h"
 #include "../mlx/mlx.h"
 
 typedef struct s_map {
@@ -38,5 +39,8 @@ typedef struct s_map {
 }   t_map;
 
 void	ft_error(char *str);
+void	check_extension(char *argv);
+void    read_map(char *argv);
+void    check_borders(char **map, int height);
 
 #endif
