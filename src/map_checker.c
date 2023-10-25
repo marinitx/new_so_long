@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/24 15:49:48 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:38:21 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void check_borders(char **map, int height)
     width = (ft_strlen(map[row]) - 1);
     while (map[row][col] != '\0')
     {
+        col = 0;
         if (row == 0 || row == height - 1) //primera y ultima row
         {
             while (map[row][col] != '\n' && map[row][col] != '\0')
@@ -36,17 +37,19 @@ void check_borders(char **map, int height)
         }
         if ((row > 0) && (row < height - 1)) //rows entre medias
         {
-            printf("Último caracter del mapa de la fila %d es %c\n", row, map[row][width - 1]);
+            // printf("\nEstoy en la filita: %d\n", row);
+            // printf("Estoy en la columnita: %d\n", col);
+            // printf("Último caracter del mapa de la fila %d es %c\n", row, map[row][width - 1]);
             if (map[row][0] != '1' || map[row][width - 1] != '1')
                 ft_error("The map is not surrounded by walls!");
             col++;
         }
         // Porfi, no sumes más, basta vale?
-        printf("\nEstoy en la fila: %d\n", row);
-        row++;
-        printf("Estoy en la columna: %d\n", col);
-        col = 0;
-        printf("caracter para el while: %c\n", map[row][col]);
+        // printf("\nEstoy en la fila: %d\n", row);
+        if (row < height - 1)
+            row++;
+        // printf("Estoy en la columna: %d\n", col);
+        // printf("caracter para el while: %c\n", map[row][col]);
     }
 }
 
