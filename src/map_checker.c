@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/25 18:38:21 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:43:29 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ void check_borders(char **map, int height)
     row = 0;
     col = 0;
     width = (ft_strlen(map[row]) - 1);
+
+    //printf("llego al check char\n");
+    check_char(map, height);
     while (map[row][col] != '\0')
     {
         col = 0;
-        if (row == 0 || row == height - 1) //primera y ultima row
+        if (row == 0 || row == height - 1)
         {
             while (map[row][col] != '\n' && map[row][col] != '\0')
             {
@@ -35,21 +38,54 @@ void check_borders(char **map, int height)
                 col++;
             }
         }
-        if ((row > 0) && (row < height - 1)) //rows entre medias
+        if ((row > 0) && (row < height - 1))
         {
-            // printf("\nEstoy en la filita: %d\n", row);
-            // printf("Estoy en la columnita: %d\n", col);
-            // printf("Último caracter del mapa de la fila %d es %c\n", row, map[row][width - 1]);
             if (map[row][0] != '1' || map[row][width - 1] != '1')
                 ft_error("The map is not surrounded by walls!");
             col++;
         }
-        // Porfi, no sumes más, basta vale?
-        // printf("\nEstoy en la fila: %d\n", row);
         if (row < height - 1)
             row++;
-        // printf("Estoy en la columna: %d\n", col);
-        // printf("caracter para el while: %c\n", map[row][col]);
+    }
+}
+
+void check_char(char **map, int height)
+{
+    //printf("\nentro al check char\n");
+    int collectables;
+    int exit;
+    int num_exit;
+    int player;
+    int row;
+    int col;
+
+    row = 0;
+    num_exit = 0;
+    collectables = 0;
+    exit = 0;
+    player = 0;
+    col = 0;
+    //printf("Estoy en la fila %d y en la columna %d\n", row, col);
+    
+    while (map[row][col] != '\0')
+    {
+        col = 0;
+        //printf("Estoy en la fila %d y en la columna %d\n", row, col);
+        while (map[row][col] != '\n')
+        {
+           if ((map[row][col] != '0' && map[row][col] != '1' && map[row][col] != 'C') &&
+           (map[row][col] != 'E' && map[row][col] != 'P' && map[row][col] != '\n' && map[row][col] != '\0'))
+                ft_error("Wrong characters on the map!");
+            if (map[row][col] == 'E')
+                num_exit++;
+            if (map[row][col] == 'P')
+                player++;
+            if (map[row][col] == 'C')
+                collectables++;
+            col++;
+            //printf("Estoy en la fila %d y en la columna %d\n", row, col);
+        }
+        row++;
     }
 }
 
@@ -82,7 +118,7 @@ void read_map(char *argv)
     while (row < height)
     {
         map[row] = get_next_line(fd);
-        printf("%s", map[row]);
+        printf("%s", map[row]); //borrar el salto de linea
         row++;
     }
     check_borders(map, height);
@@ -99,6 +135,7 @@ void	check_extension(char *argv)
 	if (ft_strncmp(".ber", extension, 4) != 0)
             ft_error("The extension is not .ber!");
     read_map(argv);
+    printf("\n"); //borrar
 }
 
 void	ft_error(char *str)

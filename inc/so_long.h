@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/23 18:54:51 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:46:48 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ void	ft_error(char *str);
 void	check_extension(char *argv);
 void    read_map(char *argv);
 void    check_borders(char **map, int height);
+void    check_char(char **map, int height);
+void    ft_init();
+void count_items(char **map, int height);
 
 #endif
