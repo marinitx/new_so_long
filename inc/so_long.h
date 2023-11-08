@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/30 19:46:48 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:11:07 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@
 #include "../gnl/get_next_line.h"
 #include "../libft/libft.h"
 #include "../mlx/mlx.h"
+
+# define KEY_ESC		53
+# define KEY_W			13
+# define KEY_A			0
+# define KEY_S			1
+# define KEY_D			2
+# define ARROW_UP		126
+# define ARROW_DOWN		125
+# define ARROW_LEFT		123
+# define ARROW_RIGHT	124
+
+# define DESTROY_NOTIFY	17
 
 typedef struct s_map {
     void *mlx;
@@ -44,6 +56,7 @@ void    read_map(char *argv);
 void    check_borders(char **map, int height);
 void    check_char(char **map, int height);
 void    ft_init();
-void count_items(char **map, int height);
+void    count_items(char **map, int height);
+void    init_xpm();
 
 #endif
