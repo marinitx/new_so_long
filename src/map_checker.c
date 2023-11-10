@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/10/30 19:43:29 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:14:50 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,13 @@ void check_char(char **map, int height)
     col = 0;
     //printf("Estoy en la fila %d y en la columna %d\n", row, col);
     
-    while (map[row][col] != '\0')
+    while (map[row][col] != '\0' && row < height)
     {
         col = 0;
         //printf("Estoy en la fila %d y en la columna %d\n", row, col);
         while (map[row][col] != '\n')
         {
+            printf("\n%c\n", map[row][col]);
            if ((map[row][col] != '0' && map[row][col] != '1' && map[row][col] != 'C') &&
            (map[row][col] != 'E' && map[row][col] != 'P' && map[row][col] != '\n' && map[row][col] != '\0'))
                 ft_error("Wrong characters on the map!");
@@ -83,10 +84,16 @@ void check_char(char **map, int height)
             if (map[row][col] == 'C')
                 collectables++;
             col++;
-            //printf("Estoy en la fila %d y en la columna %d\n", row, col);
+            printf("Estoy en la fila %d y en la columna %d\n", row, col);
         }
-        row++;
+        //if (row < height - 1)
+            row++;
     }
+    printf("\n%s\n", "aqui me habré leido todo el mapa en los caracteres");
+    if (num_exit != 1)
+        ft_error("Map not valid");
+    if (player != 1)
+        ft_error("Map not valid");
 }
 
 //Creates with malloc a 2d char map as found in file

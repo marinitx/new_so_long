@@ -6,11 +6,11 @@
 #    By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 17:54:21 by mhiguera          #+#    #+#              #
-#    Updated: 2023/10/24 15:16:37 by mhiguera         ###   ########.fr        #
+#    Updated: 2023/11/10 14:09:23 by mhiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =  ./src/so_long.c ./src/map_checker.c
+SRC =  ./src/so_long.c ./src/map_checker.c ./src/controls.c ./src/img.c
 
 OBJS = $(SRC:.c=.o)
 GNL_OBJS = $(GNL:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/08 15:11:07 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:07:33 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_map {
     void    *exit;
     void    *player_y;
     void    *player_x;
+    void    *img_height;
+    void    *img_width;
     
     
 
@@ -58,5 +60,8 @@ void    check_char(char **map, int height);
 void    ft_init();
 void    count_items(char **map, int height);
 void    init_xpm();
+int	    key_hooks(int keycode, t_map *map);
+void    print_sprites(char *relative_path, t_map *map);
+void    print_floor_walls(t_map *map);
 
 #endif
