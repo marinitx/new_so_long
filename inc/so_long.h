@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/10 14:07:33 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:20:35 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "../gnl/get_next_line.h"
-#include "../libft/libft.h"
 #include "../mlx/mlx.h"
 
 # define KEY_ESC		53
@@ -34,8 +33,10 @@
 # define DESTROY_NOTIFY	17
 
 typedef struct s_map {
-    void *mlx;
-    char **map;
+    void    *mlx;
+    char    **map;
+    int     row;
+    int     col;
     int     width;
     int     height;
     void    *mlx_win;
@@ -53,15 +54,15 @@ typedef struct s_map {
 }   t_map;
 
 void	ft_error(char *str);
-void	check_extension(char *argv);
-void    read_map(char *argv);
-void    check_borders(char **map, int height);
-void    check_char(char **map, int height);
+void	check_extension(char *argv, t_map *map);
+void    read_map(char *argv, t_map *map);
+void    check_borders(t_map *map, int height);
+void    check_char(t_map *map, int height);
 void    ft_init();
 void    count_items(char **map, int height);
 void    init_xpm();
 int	    key_hooks(int keycode, t_map *map);
 void    print_sprites(char *relative_path, t_map *map);
-void    print_floor_walls(t_map *map);
+void    print_floor_walls(t_map *map, char **mapi);
 
 #endif

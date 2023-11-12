@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:11:27 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/10 14:13:21 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/12 20:42:16 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	game_over(int keycode, t_map *map)
 	return (0);
 }
 
-void ft_init()
+
+void ft_init(char **mapi)
 {
 	t_map	map;
 	void	*img;
@@ -42,7 +43,7 @@ void ft_init()
 	
 	map.mlx = mlx_init();
 	map.mlx_win = mlx_new_window(map.mlx, 1080, 1080, "so_long");
-	print_floor_walls(&map);
+	print_floor_walls(&map, mapi);
 	img = mlx_new_image(map.mlx, 50, 50);
 	//mlx_put_image_to_window(map.mlx, map.mlx_win, img, 50, 50);
 	printf("\n%s\n", "hola");
@@ -51,16 +52,16 @@ void ft_init()
 	mlx_loop(map.mlx);
 }
 
+
 int main (int argc, char *argv[])
 {
 	t_map	map;
 	
 	if (argc == 2)
 	{		
-		check_extension(argv[1]);
+		check_extension(argv[1], &map);
 		//printf("%s\n", "hola");
 		//printf("%s\n", "holaaaaaaaa");
-		ft_init();
 		//map.mlx = mlx_init();
 		//map.mlx_win = mlx_new_window(map.mlx, 1080, 1080, "so_long");
 		//mlx_loop(map.mlx);
