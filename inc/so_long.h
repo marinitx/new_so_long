@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/12 21:20:35 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:44:59 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <fcntl.h>
 #include "../gnl/get_next_line.h"
 #include "../mlx/mlx.h"
+#include "../libft/libft.h"
 
 # define KEY_ESC		53
 # define KEY_W			13
@@ -40,24 +41,24 @@ typedef struct s_map {
     int     width;
     int     height;
     void    *mlx_win;
-	void    *img;
+	char    *img;
     void    *floor;
     void    *collect;
     void    *exit;
     void    *player_y;
     void    *player_x;
-    void    *img_height;
-    void    *img_width;
+    int    img_height;
+    int    img_width;
     
     
 
 }   t_map;
 
 void	ft_error(char *str);
-void	check_extension(char *argv, t_map *map);
-void    read_map(char *argv, t_map *map);
-void    check_borders(t_map *map, int height);
-void    check_char(t_map *map, int height);
+void	check_extension(char *argv);
+void    read_map(char *argv);
+void    check_borders(char **map, int height);
+void    check_char(char **map, int height);
 void    ft_init();
 void    count_items(char **map, int height);
 void    init_xpm();

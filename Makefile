@@ -6,7 +6,7 @@
 #    By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 17:54:21 by mhiguera          #+#    #+#              #
-#    Updated: 2023/11/12 21:20:15 by mhiguera         ###   ########.fr        #
+#    Updated: 2023/11/14 19:48:53 by mhiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ OBJS = $(SRC:.c=.o)
 GNL_OBJS = $(GNL:.c=.o)
 ALL_OBJS = $(OBJS) $(GNL_OBJS)
 
-C = gcc
+CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -g3 -fsanitize=address
 
 MLX_PATH = mlx/
 MLX = -L $(MLX_PATH) $(MLX_PATH)libmlx.a -lmlx -framework OpenGL -framework AppKit
@@ -40,7 +40,7 @@ all: $(NAME)
 $(NAME): $(ALL_OBJS)
 	@make bonus -C $(LIBFT_DIR)
 	@make -C $(MLX_PATH)
-	@$(C) $(FLAGS) $(ALL_OBJS) $(MLX) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(ALL_OBJS) $(MLX) $(LIBFT) -o $(NAME)
 	
 
 bonus: $(OBJ) $(BONUS_OBJS)
