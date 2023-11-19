@@ -6,22 +6,24 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:39:25 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/14 19:54:33 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/19 18:34:41 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
+/*
 void print_sprites(char *relative_path, t_map *map)
 {
-    map->img_width = 100;
-    map->img_height = 100;
+    t_game game;
+    game->img_width = 100;
+    game->img_height = 100;
     
       printf("\nhooola pintame esto: %s\n", relative_path);
-    map->img = mlx_xpm_file_to_image(map->mlx, relative_path, &map->img_width, &map->img_height); //FALLA ESTO
+    game->img = mlx_xpm_file_to_image(map->mlx, relative_path, &map->img_width, &map->img_height); //FALLA ESTO
     mlx_put_image_to_window(map->mlx, map->mlx_win, map->img, 50, 50);
     printf("hola esto es: %s\n", map->img);
-    if (map->img == NULL)
+    if (game->img == NULL)
         ft_error("Error en la lectura de imágenes");
 }
 
@@ -47,3 +49,4 @@ void print_floor_walls(t_map *map, char **mapi)
         row++;
     }
 }
+*/
