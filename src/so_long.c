@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:11:27 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/19 19:40:26 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:10:51 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void ft_init(char **mapi, int height)
 	map.mlx = mlx_init();
 	if (!(map.mlx))
 		ft_error("Failed to load MLX");
-	map.mlx_win = mlx_new_window(map.mlx, 56 * width, 56 * height, "so_long");
+	map.mlx_win = mlx_new_window(map.mlx, 50 * width, 50 * height, "so_long");
 	if (!(map.mlx_win))
 		ft_error("Failed to load window");
-	//print_floor_walls(&map, mapi);
-	game.img = mlx_xpm_file_to_image(map.mlx, relative_path, &game.img_width, &game.img_height);
-	if (!game.img)
-		ft_error("Failed to read XPM files");
-	//mlx_put_image_to_window(map.mlx, map.mlx_win, img, 50, 50);
+	print_floor_walls(map, mapi);
+	//game.img = mlx_xpm_file_to_image(map.mlx, "/Users/mhiguera/Desktop/so_long/xpm/frog.xpm", &game.img_width, &game.img_height);
+	//if (!game.img)
+	//	ft_error("Failed to read XPM files");
+	//mlx_put_image_to_window(map.mlx, map.mlx_win, game.img, 0, 0);
 	printf("\n%s\n", "hola");
 	mlx_hook(map.mlx_win, 02, 0, key_hooks, &map);
 	mlx_hook(map.mlx_win, 17, 1L << 0, game_over, &map);
