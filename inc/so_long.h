@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 15:08:09 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:49:37 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,6 @@
 
 # define DESTROY_NOTIFY	17
 
-typedef struct s_map {
-    void    *mlx;
-    void    *mlx_win;
-    char    **map;
-    int     row;
-    int     col;
-    int     width;
-    int     height;
-    
-}   t_map;
-
 typedef struct s_game {
 	void    *img;
     void    *floor;
@@ -53,6 +42,18 @@ typedef struct s_game {
     int    img_width;
     int     movements;    
 }   t_game;
+
+typedef struct s_map {
+    void    *mlx;
+    void    *mlx_win;
+    char    **map;
+    int     row;
+    int     col;
+    int     width;
+    int     height;
+    t_game  game;
+}   t_map;
+
 
 void	ft_error(char *str);
 void	check_extension(char *argv);
