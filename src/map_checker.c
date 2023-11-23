@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/21 18:45:53 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:19:20 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ void	ft_error(char *str)
     exit(1);
 }
 
-void check_different(char **map, int height)
+void check_different(t_map map, int height)
 {
     int row;
     int col;
 
     row = 0;
     col = 0;
-    while (map[row][col] != '\0' && row < height)
+    while (map.map[row][col] != '\0' && row < height)
     {
         col = 0;
-        while (map[row][col] != '\n')
+        while (map.map[row][col] != '\n')
         {
-            if ((map[row][col] != '0' && map[row][col] != '1' && map[row][col] != 'C') &&
-            (map[row][col] != 'E' && map[row][col] != 'P' && map[row][col] != '\n' && map[row][col] != '\0'))
+            if ((map.map[row][col] != '0' && map.map[row][col] != '1' && map.map[row][col] != 'C') &&
+            (map.map[row][col] != 'E' && map.map[row][col] != 'P' && map.map[row][col] != '\n' && map.map[row][col] != '\0'))
                  ft_error("Wrong characters on the map!");
             col++;
         }
@@ -47,11 +47,10 @@ void check_different(char **map, int height)
     }
 }
 
-void check_char(char **mapi, int height) //dividir esta función en dos
+void check_char(t_map map, int height) //dividir esta función en dos
 {
     //printf("\nentro al check char\n");
     t_game  game;
-    t_map map;
     int row;
     int col;
 
@@ -62,22 +61,22 @@ void check_char(char **mapi, int height) //dividir esta función en dos
     col = 0;
     //printf("Estoy en la fila %d y en la columna %d\n", row, col);
     
-    while (mapi[row][col] != '\0' && row < height)
+    while (map.map[row][col] != '\0' && row < height)
     {
         col = 0;
         //printf("Estoy en la fila %d y en la columna %d\n", row, col);
-        while (mapi[row][col] != '\n')
+        while (map.map[row][col] != '\n')
         {
-            printf("\n%c\n", mapi[row][col]);
-            if (mapi[row][col] == 'E')
+            printf("\n%c\n", map.map[row][col]);
+            if (map.map[row][col] == 'E')
                 game.exit_count++;
-            if (mapi[row][col] == 'P')
+            if (map.map[row][col] == 'P')
             {
                 game.player_y = row;
                 game.player_x = col;
                 game.player_count++;
             }
-            if (mapi[row][col] == 'C')
+            if (map.map[row][col] == 'C')
                 game.all_coins++;
             col++;
             printf("Estoy en la fila %d y en la columna %d\n", row, col);
@@ -97,7 +96,7 @@ void check_char(char **mapi, int height) //dividir esta función en dos
 }
 
 //Checks if every border is closed by walls (1)
-void check_borders(char **map, int height)
+void check_borders(t_map map, int height)
 {
     int row;
     int col;
@@ -106,26 +105,26 @@ void check_borders(char **map, int height)
     row = 0;
     col = 0;
     //printf("aksjdjfhkjasdf %s\n", map->map[0]);
-    width = (ft_strlen(map[row]) - 1); //esto me da segmentation porque no logra coger el string
+    width = (ft_strlen(map.map[row]) - 1); //esto me da segmentation porque no logra coger el string
     //printf("llego al check char\n");
 
     //printf("llego al check char\n");
     //printf("\n%s\n", "esto es un printf de comprobación");
-    while (map[row][col] != '\0')
+    while (map.map[row][col] != '\0')
     {
         col = 0;
         if (row == 0 || row == height - 1)
         {
-            while (map[row][col] != '\n' && map[row][col] != '\0')
+            while (map.map[row][col] != '\n' && map.map[row][col] != '\0')
             {
-                if (map[0][col] != '1' || map[height - 1][col] != '1')
+                if (map.map[0][col] != '1' || map.map[height - 1][col] != '1')
                     ft_error("The map is not surrounded by walls!");
                 col++;
             }
         }
         if ((row > 0) && (row < height - 1))
         {
-            if (map[row][0] != '1' || map[row][width - 1] != '1')
+            if (map.map[row][0] != '1' || map.map[row][width - 1] != '1')
                 ft_error("The map is not surrounded by walls!");
             col++;
         }
@@ -134,10 +133,8 @@ void check_borders(char **map, int height)
     }
 }
 
-void map_checker(char **map, int height)
-{
-    //t_map *map;
-    
+void map_checker(t_map map, int height)
+{   
     check_borders(map, height);
     check_char(map, height);
     check_different(map, height);

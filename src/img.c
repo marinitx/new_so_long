@@ -6,14 +6,14 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:39:25 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/20 18:46:52 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:23:14 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
 
-void print_sprites(char *relative_path, t_map map, char **mapi, int x, int y)
+void print_sprites(char *relative_path, t_map map, int x, int y)
 {
     t_game game;
 
@@ -24,7 +24,7 @@ void print_sprites(char *relative_path, t_map map, char **mapi, int x, int y)
     mlx_put_image_to_window(map.mlx, map.mlx_win, game.img, x * 50, y * 50);
 }
 
-void print_walls(t_map map, char **mapi)
+void print_walls(t_map map)
 {
     int col;
     int row;
@@ -37,14 +37,14 @@ void print_walls(t_map map, char **mapi)
     x = 0;
     y = 0;
     relative_path = "./xpm/waterlily.xpm";
-    while (mapi[row][col] != '\0')
+    while (map.map[row][col] != '\0')
     {
         col = 0;
         x = 0;
-        while(mapi[row][col] != '\n')
+        while(map.map[row][col] != '\n')
         {
-            if (mapi[row][col] == '1')
-                print_sprites(relative_path, map, mapi, col, row);
+            if (map.map[row][col] == '1')
+                print_sprites(relative_path, map, col, row);
             col++;
             x++;
         }
@@ -53,7 +53,7 @@ void print_walls(t_map map, char **mapi)
     }
 }
 
-void print_else(t_map map, char **mapi)
+void print_else(t_map map)
 {
     int col;
     int row;
@@ -66,18 +66,18 @@ void print_else(t_map map, char **mapi)
     x = 0;
     y = 0;
     relative_path = "./xpm/frog.xpm";
-    while (mapi[row][col] != '\0')
+    while (map.map[row][col] != '\0')
     {
         col = 0;
         x = 0;
-        while(mapi[row][col] != '\n')
+        while(map.map[row][col] != '\n')
         {
-            if (mapi[row][col] == 'P')
-                print_sprites("./xpm/frog.xpm", map, mapi, col, row);
-            if (mapi[row][col] == 'C')
-                print_sprites("./xpm/fly.xpm", map, mapi, col, row);
-            if (mapi[row][col] == 'E')
-                print_sprites("./xpm/rock.xpm", map, mapi, col, row);
+            if (map.map[row][col] == 'P')
+                print_sprites("./xpm/frog.xpm", map, col, row);
+            if (map.map[row][col] == 'C')
+                print_sprites("./xpm/fly.xpm", map, col, row);
+            if (map.map[row][col] == 'E')
+                print_sprites("./xpm/rock.xpm", map, col, row);
             col++;
             x++;
         }
@@ -86,7 +86,7 @@ void print_else(t_map map, char **mapi)
     }
 }
 
-void print_floor_walls(t_map map, char **mapi)
+void print_floor_walls(t_map map)
 {
     //al empezar, pinta todo el mapa de agua
     char *relative_path;
@@ -102,24 +102,24 @@ void print_floor_walls(t_map map, char **mapi)
     relative_path = "./xpm/water.xpm";
     printf("%s\n", "hasta aquí llega");
     //print_sprites(relative_path, map, mapi);
-    printf("Esta es el caracter: %c\n", mapi[row][col]);
-    while (mapi[row][col] != '\0')
+    printf("Esta es el caracter: %c\n", map.map[row][col]);
+    while (map.map[row][col] != '\0')
     {
         printf("Esta es la fila: %i\n", row);
         col = 0;
         x = 0;
-        while (mapi[row][col] != '\n')
+        while (map.map[row][col] != '\n')
         {
-            print_sprites(relative_path, map, mapi, col, row);
+            print_sprites(relative_path, map, col, row);
             col++;
             x++;
         }
         row++;
         y++;
         printf("Esta es la fila: %i\n", row);
-        printf("Este es el caracter: %c\n", mapi[row][col]);
-        print_walls(map, mapi);
-        print_else(map, mapi);
+        printf("Este es el caracter: %c\n", map.map[row][col]);
+        print_walls(map);
+        print_else(map);
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:53:07 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/19 18:33:59 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:14:02 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //Creates with malloc a 2d char map as found in file
 void read_map(char *argv)
 {
-    char **map;
+    t_map map;
     int fd;
     char *tmp;
     int height;
@@ -34,8 +34,8 @@ void read_map(char *argv)
         tmp = get_next_line(fd);
         free(tmp);
     }
-    map = malloc(sizeof(char *) * (height + 1));
-    if (!map)
+    map.map = malloc(sizeof(char *) * (height + 1));
+    if (!map.map)
         ft_error("\nFile not found!");
     close(fd);
     fd = open(argv, O_RDONLY);
@@ -43,8 +43,8 @@ void read_map(char *argv)
         ft_error("Could not read the file!");
     while (row < height)
     {
-        map[row] = get_next_line(fd);
-        printf("%s", map[row]); //borrar el salto de linea
+        map.map[row] = get_next_line(fd);
+        printf("%s", map.map[row]); //borrar el salto de linea
         row++;
     }
     close(fd);

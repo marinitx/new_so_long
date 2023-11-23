@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/21 18:18:24 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:23:05 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,16 @@ typedef struct s_game {
 void	ft_error(char *str);
 void	check_extension(char *argv);
 void    read_map(char *argv);
-void    check_borders(char **map, int height);
-void    check_char(char **map, int height);
+void    check_borders(t_map map, int height);
+void    check_char(t_map map, int height);
 void    ft_init();
-void    count_items(char **map, int height);
+void    count_items(t_map map, int height);
 void    init_xpm();
 int	    key_hooks(int keycode, t_map map);
-void print_sprites(char *relative_path, t_map map, char **mapi, int x, int y);
-void    print_floor_walls(t_map map, char **mapi);
-void    check_different(char **map, int height);
-void    map_checker(char **map, int height);
+void print_sprites(char *relative_path, t_map map, int x, int y);
+void    print_floor_walls(t_map map);
+void    check_different(t_map map, int height);
+void    map_checker(t_map map, int height);
 int    you_win(t_game game);
 
 #endif

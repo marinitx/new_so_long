@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 11:32:47 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/21 18:45:17 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:27:27 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void go_up(t_map map)
 					you_win(game);
 			game.coins--;
 		}
-	map.map[game.player_y][game.player_x] = '0';
+	printf("%s\n", "yooo por ahí no paso");
 	map.map[(game.player_y - 1)][game.player_x] = 'P';
+	map.map[game.player_y][game.player_x] = '0';
 	game.player_y--;
 	game.movements++;
 }
@@ -83,7 +84,7 @@ int	key_hooks(int keycode, t_map map)
 		mlx_destroy_window(map.mlx, map.mlx_win);
 		exit(0);
 	}
-	if (keycode == W)
+	if (keycode == W) //y la posición de encima es distinta a 1
 	{
 		printf("hoooola caracola\n");
 		go_up(map);
