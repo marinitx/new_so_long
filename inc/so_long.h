@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/20 17:17:47 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:18:24 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,10 @@
 #include "../libft/libft.h"
 
 # define KEY_ESC		53
-# define KEY_W			13
-# define KEY_A			0
-# define KEY_S			1
-# define KEY_D			2
-# define ARROW_UP		126
-# define ARROW_DOWN		125
-# define ARROW_LEFT		123
-# define ARROW_RIGHT	124
+# define A 0
+# define S 1
+# define D 2
+# define W 13
 
 # define DESTROY_NOTIFY	17
 
@@ -46,12 +42,15 @@ typedef struct s_map {
 typedef struct s_game {
 	void    *img;
     void    *floor;
-    void    *collect;
-    void    *exit;
-    void    *player_y;
-    void    *player_x;
+    int    all_coins;
+    int    exit_count;
+    int     player_count;
+    int     coins;
+    int    player_y;
+    int    player_x;
     int    img_height;
     int    img_width;
+    int     movements;    
 }   t_game;
 
 void	ft_error(char *str);
@@ -62,10 +61,11 @@ void    check_char(char **map, int height);
 void    ft_init();
 void    count_items(char **map, int height);
 void    init_xpm();
-int	    key_hooks(int keycode, t_map *map);
+int	    key_hooks(int keycode, t_map map);
 void print_sprites(char *relative_path, t_map map, char **mapi, int x, int y);
 void    print_floor_walls(t_map map, char **mapi);
 void    check_different(char **map, int height);
 void    map_checker(char **map, int height);
+int    you_win(t_game game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/19 19:20:46 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:45:53 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_error(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
-    exit(EXIT_FAILURE);
+    exit(1);
 }
 
 void check_different(char **map, int height)
@@ -47,47 +47,51 @@ void check_different(char **map, int height)
     }
 }
 
-void check_char(char **map, int height) //dividir esta función en dos
+void check_char(char **mapi, int height) //dividir esta función en dos
 {
     //printf("\nentro al check char\n");
-    int collectables;
-    int exit;
-    int num_exit;
-    int player;
+    t_game  game;
+    t_map map;
     int row;
     int col;
 
     row = 0;
-    num_exit = 0;
-    collectables = 0;
-    exit = 0;
-    player = 0;
+    game.all_coins = 0; 
+    game.exit_count = 0;
+    game.player_count = 0;
     col = 0;
     //printf("Estoy en la fila %d y en la columna %d\n", row, col);
     
-    while (map[row][col] != '\0' && row < height)
+    while (mapi[row][col] != '\0' && row < height)
     {
         col = 0;
         //printf("Estoy en la fila %d y en la columna %d\n", row, col);
-        while (map[row][col] != '\n')
+        while (mapi[row][col] != '\n')
         {
-            printf("\n%c\n", map[row][col]);
-            if (map[row][col] == 'E')
-                num_exit++;
-            if (map[row][col] == 'P')
-                player++;
-            if (map[row][col] == 'C')
-                collectables++;
+            printf("\n%c\n", mapi[row][col]);
+            if (mapi[row][col] == 'E')
+                game.exit_count++;
+            if (mapi[row][col] == 'P')
+            {
+                game.player_y = row;
+                game.player_x = col;
+                game.player_count++;
+            }
+            if (mapi[row][col] == 'C')
+                game.all_coins++;
             col++;
             printf("Estoy en la fila %d y en la columna %d\n", row, col);
         }
         //if (row < height - 1)
             row++;
     }
+    game.coins = game.all_coins;
     printf("\n%s\n", "aqui me habré leido todo el mapa en los caracteres");
-    if (num_exit != 1)
+    printf("Este es el game player count: %d\n", game.player_count);
+    printf("Esta es la posición de player x: %d\n Esta es la posición de player y: %d\n", game.player_x, game.player_y);
+    if (game.exit_count != 1)
         ft_error("Map not valid");
-    if (player != 1)
+    if (game.player_count != 1)
         ft_error("Map not valid");
     
 }

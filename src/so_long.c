@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:11:27 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/20 18:10:51 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:20:49 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void ft_init(char **mapi, int height)
 	// int		img_height;
 
 	row = 0;
+	game.movements = 0; //no se si esto va aqui pero bueno es donde inicializo los movimientos
 	width = (ft_strlen(mapi[row]) - 1);
 	map.mlx = mlx_init();
 	if (!(map.mlx))
@@ -59,6 +60,7 @@ void ft_init(char **mapi, int height)
 int main (int argc, char *argv[])
 {
 	t_map	map;
+	t_game game;
 	
 	if (argc == 2)
 		check_extension(argv[1]);
