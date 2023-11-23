@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:53:07 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 12:14:02 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:01:11 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void read_map(char *argv)
         row++;
     }
     close(fd);
-    map_checker(map, height);
+    map_checker(&map, height);
 }
 void	check_extension(char *argv)
 {
