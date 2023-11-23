@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:53:07 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 17:03:19 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:55:59 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void read_map(char *argv)
         tmp = get_next_line(fd);
         free(tmp);
     }
-    printf("%d\n", height);
     map.map = ft_calloc(sizeof(char *), (height + 1));
     if (!map.map)
         ft_error("\nFile not found!");
@@ -48,6 +47,7 @@ void read_map(char *argv)
         printf("%s", map.map[row]); //borrar el salto de linea
         row++;
     }
+    printf("\n");
     close(fd);
     map_checker(&map, height);
 }

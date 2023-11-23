@@ -6,24 +6,26 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 11:32:47 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 18:28:30 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:14:31 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
+//FALTA POR ARREGLAR LO DEL PRINTF QUE ESTÁ MAL PUESTAN LAS POSICIONES, PORQUE NO FUNCIONA EL DOBLE COMPROBADOR PARA LA SALIDA
 void go_up(t_map *map, t_game *game)
 {
-	printf("----------%c\n", map->map[0][0]);
-	if ((game->player_y - 1) == 'C')
+	printf("%c\n", (map->map[game->player_y][game->player_x]));
+	if ((map->map[(game->player_y - 1)][game->player_x]) == 'C')
 		{
-			if (game->coins == 0)
-					you_win(*game);
 			game->coins--;
+			if (game->coins == 0 && 
+			(map->map[(game->player_y - 1)][game->player_x]) == 'E')
+			{
+					you_win(game);
+			}
 		}
-	printf("A VEEEER ESTO: %d\n%d\n", game->player_y, game->player_x);
-	printf("%s\n", "yooo por ahí no paso");
-	map->map[(game->player_y - 1)][game->player_x] = 'P'; //aqui me da el segfault
+	map->map[(game->player_y - 1)][game->player_x] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_y--;
 	game->movements++;
@@ -31,18 +33,16 @@ void go_up(t_map *map, t_game *game)
 	
 }
 
-void go_down(t_map *map)
+void go_down(t_map *map, t_game *game)
 {
-	t_game *game = &map->game;
-	printf("----------%c\n", map->map[0][0]);
-	if ((game->player_y - 1) == 'C')
+	printf("%c\n", (map->map[game->player_y][(game->player_x + 1)]));
+	if (map->map[(game->player_y + 1)][game->player_x] == 'C')
 		{
-			if (game->coins == 0)
-					you_win(*game);
 			game->coins--;
+			if (game->coins == 0 && 
+			(map->map[(game->player_y + 1)][game->player_x]) == 'E')
+					you_win(game);
 		}
-	printf("A VEEEER ESTO: %d\n%d\n", game->player_y, game->player_x);
-	printf("%s\n", "yooo por ahí no paso");
 	map->map[(game->player_y + 1)][game->player_x] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_y++;
@@ -50,18 +50,16 @@ void go_down(t_map *map)
 	print_floor_walls(map);
 }
 
-void go_left(t_map *map)
+void go_left(t_map *map, t_game *game)
 {
-	t_game *game = &map->game;
-	printf("----------%c\n", map->map[0][0]);
-	if ((game->player_y - 1) == 'C')
+	printf("%c\n", (map->map[game->player_y][(game->player_x + 1)]));
+	if ((map->map[game->player_y][(game->player_x - 1)]) == 'C')
 		{
-			if (game->coins == 0)
-					you_win(*game);
 			game->coins--;
+			if (game->coins == 0 && 
+			(map->map[game->player_y][(game->player_x - 1)]) == 'E')
+					you_win(game);
 		}
-	printf("A VEEEER ESTO: %d\n%d\n", game->player_y, game->player_x);
-	printf("%s\n", "yooo por ahí no paso");
 	map->map[game->player_y][(game->player_x - 1)] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_x--;
@@ -69,18 +67,16 @@ void go_left(t_map *map)
 	print_floor_walls(map);
 }
 
-void go_right(t_map *map)
+void go_right(t_map *map, t_game *game)
 {
-	t_game *game = &map->game;
-	printf("----------%c\n", map->map[0][0]);
-	if ((game->player_y - 1) == 'C')
+	printf("%c\n", (map->map[game->player_y][(game->player_x + 1)]));
+	if ((map->map[game->player_y][(game->player_x + 1)]) == 'C')
 		{
-			if (game->coins == 0)
-					you_win(*game);
 			game->coins--;
+			if (game->coins == 0 && 
+			(map->map[game->player_y][(game->player_x + 1)]) == 'E')
+					you_win(game);
 		}
-	printf("A VEEEER ESTO: %d\n%d\n", game->player_y, game->player_x);
-	printf("%s\n", "yooo por ahí no paso");
 	map->map[game->player_y][(game->player_x + 1)] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_x++;
@@ -97,25 +93,21 @@ int	key_hooks(int keycode, t_map *map)
 		mlx_destroy_window(map->mlx, map->mlx_win);
 		exit(0);
 	}
-	if (keycode == W && (map->map[(game->player_y - 1)][game->player_x]) != '1') //y la posición de encima es distinta a 1
+	if (keycode == W && (map->map[(game->player_y - 1)][game->player_x]) != '1') 
 	{
-		printf("hoooola caracola\n");
 		go_up(map, game);
 	}
-	if (keycode == A && (map->map[game->player_y][(game->player_x - 1)]) != '1') //y la posición de encima es distinta a 1
+	if (keycode == A && (map->map[game->player_y][(game->player_x - 1)]) != '1')
 	{
-		printf("hoooola caracola\n");
-		go_left(map);
+		go_left(map, game);
 	}
-	if (keycode == S && (map->map[(game->player_y + 1)][game->player_x]) != '1') //y la posición de encima es distinta a 1
+	if (keycode == S && (map->map[(game->player_y + 1)][game->player_x]) != '1')
 	{
-		printf("hoooola caracola\n");
-		go_down(map);
+		go_down(map, game);
 	}
-	if (keycode == D && (map->map[game->player_y][(game->player_x + 1)]) != '1') //y la posición de encima es distinta a 1
+	if (keycode == D && (map->map[game->player_y][(game->player_x + 1)]) != '1')
 	{
-		printf("hoooola caracola\n");
-		go_right(map);
+		go_right(map, game);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 16:49:37 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:39:03 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void print_sprites(char *relative_path, t_map *map, int x, int y);
 void    print_floor_walls(t_map *map);
 void    check_different(t_map *map, int height);
 void    map_checker(t_map *map, int height);
-int    you_win(t_game game);
+int    you_win(t_game *game);
 
 #endif
