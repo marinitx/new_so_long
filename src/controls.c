@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 11:32:47 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 19:14:31 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:02:03 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,72 +15,61 @@
 //FALTA POR ARREGLAR LO DEL PRINTF QUE ESTÁ MAL PUESTAN LAS POSICIONES, PORQUE NO FUNCIONA EL DOBLE COMPROBADOR PARA LA SALIDA
 void go_up(t_map *map, t_game *game)
 {
-	printf("%c\n", (map->map[game->player_y][game->player_x]));
 	if ((map->map[(game->player_y - 1)][game->player_x]) == 'C')
-		{
 			game->coins--;
-			if (game->coins == 0 && 
+	if (game->coins == 0 && 
 			(map->map[(game->player_y - 1)][game->player_x]) == 'E')
-			{
 					you_win(game);
-			}
-		}
 	map->map[(game->player_y - 1)][game->player_x] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_y--;
 	game->movements++;
+	printf("Steps: %d\n", game->movements); // ************************** METER MI PROPIO PRINTF!!! *******
 	print_floor_walls(map);
-	
 }
 
 void go_down(t_map *map, t_game *game)
 {
-	printf("%c\n", (map->map[game->player_y][(game->player_x + 1)]));
 	if (map->map[(game->player_y + 1)][game->player_x] == 'C')
-		{
 			game->coins--;
-			if (game->coins == 0 && 
+	if (game->coins == 0 && 
 			(map->map[(game->player_y + 1)][game->player_x]) == 'E')
 					you_win(game);
-		}
 	map->map[(game->player_y + 1)][game->player_x] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_y++;
 	game->movements++;
+	printf("Steps: %d\n", game->movements);
 	print_floor_walls(map);
 }
 
 void go_left(t_map *map, t_game *game)
 {
-	printf("%c\n", (map->map[game->player_y][(game->player_x + 1)]));
 	if ((map->map[game->player_y][(game->player_x - 1)]) == 'C')
-		{
 			game->coins--;
-			if (game->coins == 0 && 
+	if (game->coins == 0 && 
 			(map->map[game->player_y][(game->player_x - 1)]) == 'E')
 					you_win(game);
-		}
 	map->map[game->player_y][(game->player_x - 1)] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_x--;
 	game->movements++;
+	printf("Steps: %d\n", game->movements);
 	print_floor_walls(map);
 }
 
 void go_right(t_map *map, t_game *game)
 {
-	printf("%c\n", (map->map[game->player_y][(game->player_x + 1)]));
 	if ((map->map[game->player_y][(game->player_x + 1)]) == 'C')
-		{
 			game->coins--;
-			if (game->coins == 0 && 
+	if (game->coins == 0 && 
 			(map->map[game->player_y][(game->player_x + 1)]) == 'E')
 					you_win(game);
-		}
 	map->map[game->player_y][(game->player_x + 1)] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_x++;
 	game->movements++;
+	printf("Steps: %d\n", game->movements);
 	print_floor_walls(map);
 }
 

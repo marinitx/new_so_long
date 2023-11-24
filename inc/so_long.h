@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 18:39:03 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:01:28 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,8 @@ void	check_extension(char *argv);
 void    read_map(char *argv);
 void    check_borders(t_map *map, int height);
 void    check_char(t_map *map, int height);
-void    ft_init();
+void ft_init(t_map *map, int height);
 void    count_items(t_map *map, int height);
-void    init_xpm();
 int	    key_hooks(int keycode, t_map *map);
 void print_sprites(char *relative_path, t_map *map, int x, int y);
 void    print_floor_walls(t_map *map);

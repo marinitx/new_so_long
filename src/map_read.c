@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:53:07 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 18:55:59 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:37:35 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void read_map(char *argv)
         ft_error("Could not read the file!");
     while (row < height)
     {
+        printf("Esto es lo que va valiendo row: %d y esto es lo que vale height: %d\n", row, height);
         map.map[row] = get_next_line(fd);
         printf("%s", map.map[row]); //borrar el salto de linea
         row++;

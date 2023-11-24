@@ -6,25 +6,17 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:11:27 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 18:53:23 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:03:38 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	game_over(int keycode, t_map *map)
+int	game_over()
 {
-	(void)keycode;
-	mlx_destroy_window(map->mlx, map->mlx_win);
 	exit(0);
 	return (0);
 }
-
-void init_xpm(char **map, int height)
-{
-  
-}
-
 
 void ft_init(t_map *map, int height)
 {
@@ -34,6 +26,7 @@ void ft_init(t_map *map, int height)
 
 	row = 0;
 	width = (ft_strlen(map->map[row]) - 1);
+	map->height = height;
 	map->mlx = mlx_init();
 	if (!(map->mlx))
 		ft_error("Failed to load MLX");

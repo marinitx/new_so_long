@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/23 18:52:48 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:36:29 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void check_borders(t_map *map, int height)
     row = 0;
     col = 0;
     width = (ft_strlen(map->map[row]) - 1);
-
     while (map->map[row][col] != '\0')
     {
         col = 0;
