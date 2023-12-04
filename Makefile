@@ -6,7 +6,7 @@
 #    By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 17:54:21 by mhiguera          #+#    #+#              #
-#    Updated: 2023/11/21 18:05:59 by mhiguera         ###   ########.fr        #
+#    Updated: 2023/12/04 20:04:56 by mhiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ MLX = -L $(MLX_PATH) $(MLX_PATH)libmlx.a -lmlx -framework OpenGL -framework AppK
 LIBFT_DIR = ./libft/
 LIBFT_A = libft.a
 LIBFT = -L$(LIBFT_DIR) $(LIBFT_DIR)$(LIBFT_A)
+
+#FT_PRINTF_DIR = ./ft_printf/
+#FT_PRINTF_A = libftprintf.a
+#FT_PRINTF = -L$(FT_PRINTF_DIR) $(FT_PRINTF_DIR)$(FT_PRINTF_A)
 
 GNL = gnl/get_next_line.c gnl/get_next_line_utils.c
 

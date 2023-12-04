@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/24 14:36:29 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:54:44 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,11 @@ void check_char(t_map *map, int height) //dividir esta función en dos
         while (map->map[row][col] != '\n')
         {
             if (map->map[row][col] == 'E')
+            {
                 game.exit_count++;
+                game.exit_row = row;
+                game.exit_col = col;
+            }
             if (map->map[row][col] == 'P')
             {
                 game.player_y = row;

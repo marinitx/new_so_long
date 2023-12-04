@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:39:25 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/24 15:04:30 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:21:15 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void print_else(t_map *map, t_game *game)
                 print_sprites("./xpm/frog.xpm", map, col, row);
             if (map->map[row][col] == 'C')
                 print_sprites("./xpm/fly.xpm", map, col, row);
-            if (map->map[row][col] == 'E' && game->coins == 0)
-                print_sprites("./xpm/rock.xpm", map, col, row);
+            if (game->coins == 0)
+                print_sprites("./xpm/rock.xpm", map, game->exit_col, game->exit_row);
             col++;
         }
         row++;

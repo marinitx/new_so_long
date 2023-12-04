@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/24 15:01:28 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:52:01 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ typedef struct s_game {
     int     coins;
     int    img_height;
     int    img_width;
-    int     movements;    
+    int     movements;   
+    int     exit_row;
+    int     exit_col;
+    char **exit_position;
 }   t_game;
 
 typedef struct s_map {

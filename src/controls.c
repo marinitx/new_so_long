@@ -6,19 +6,20 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 11:32:47 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/24 15:02:03 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:24:09 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-//FALTA POR ARREGLAR LO DEL PRINTF QUE ESTÁ MAL PUESTAN LAS POSICIONES, PORQUE NO FUNCIONA EL DOBLE COMPROBADOR PARA LA SALIDA
 void go_up(t_map *map, t_game *game)
 {
 	if ((map->map[(game->player_y - 1)][game->player_x]) == 'C')
 			game->coins--;
-	if (game->coins == 0 && 
-			(map->map[(game->player_y - 1)][game->player_x]) == 'E')
+	if (game->coins == 0)
+		if  ((map->map[(game->player_y - 1)][game->player_x] == 'E')
+			|| ((game->exit_col == game->player_x) 
+			&& (game->exit_row == game->player_y - 1)))
 					you_win(game);
 	map->map[(game->player_y - 1)][game->player_x] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
@@ -32,8 +33,10 @@ void go_down(t_map *map, t_game *game)
 {
 	if (map->map[(game->player_y + 1)][game->player_x] == 'C')
 			game->coins--;
-	if (game->coins == 0 && 
-			(map->map[(game->player_y + 1)][game->player_x]) == 'E')
+	if (game->coins == 0)
+		if  ((map->map[(game->player_y + 1)][game->player_x] == 'E')
+			|| ((game->exit_col == game->player_x) 
+			&& (game->exit_row == game->player_y + 1)))
 					you_win(game);
 	map->map[(game->player_y + 1)][game->player_x] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
@@ -47,8 +50,10 @@ void go_left(t_map *map, t_game *game)
 {
 	if ((map->map[game->player_y][(game->player_x - 1)]) == 'C')
 			game->coins--;
-	if (game->coins == 0 && 
-			(map->map[game->player_y][(game->player_x - 1)]) == 'E')
+	if (game->coins == 0)
+		if  ((map->map[(game->player_y)][game->player_x - 1] == 'E')
+			|| ((game->exit_col == game->player_x - 1) 
+			&& (game->exit_row == game->player_y)))
 					you_win(game);
 	map->map[game->player_y][(game->player_x - 1)] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
@@ -62,8 +67,10 @@ void go_right(t_map *map, t_game *game)
 {
 	if ((map->map[game->player_y][(game->player_x + 1)]) == 'C')
 			game->coins--;
-	if (game->coins == 0 && 
-			(map->map[game->player_y][(game->player_x + 1)]) == 'E')
+	if (game->coins == 0)
+		if  ((map->map[(game->player_y)][game->player_x + 1] == 'E')
+			|| ((game->exit_col == game->player_x + 1) 
+			&& (game->exit_row == game->player_y)))
 					you_win(game);
 	map->map[game->player_y][(game->player_x + 1)] = 'P';
 	map->map[game->player_y][game->player_x] = '0';
