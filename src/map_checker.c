@@ -6,25 +6,12 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/04 18:54:44 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/06 18:41:15 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 #include <stdio.h>
-
-void	ft_error(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-    exit(1);
-}
 
 void check_different(t_map *map, int height)
 {
@@ -46,8 +33,8 @@ void check_different(t_map *map, int height)
         row++;
     }
 }
-
-void check_char(t_map *map, int height) //dividir esta función en dos
+//DIVIDIR EN 2
+void check_char(t_map *map, int height)
 {
     t_game  game;
     int row;
@@ -84,14 +71,15 @@ void check_char(t_map *map, int height) //dividir esta función en dos
             row++;
     }
     game.coins = game.all_coins;
+    map->coins_copy = game.all_coins;
+    map->coins_copy2 = game.all_coins;
     if (game.exit_count != 1)
         ft_error("Map not valid");
     if (game.player_count != 1)
         ft_error("Map not valid");
     map->game = game;
 }
-
-//Checks if every border is closed by walls (1)
+//DIVIDIR EN 2
 void check_borders(t_map *map, int height)
 {
     int row;
@@ -104,9 +92,18 @@ void check_borders(t_map *map, int height)
     while (map->map[row][col] != '\0')
     {
         col = 0;
-        if (row == 0 || row == height - 1)
+        if ((row == 0 || row == height - 1))
         {
             while (map->map[row][col] != '\n' && map->map[row][col] != '\0')
+            {
+                if (map->map[0][col] != '1' || map->map[height - 1][col] != '1')
+                    ft_error("The map is not surrounded by walls!");
+                col++;
+            }
+        }
+        if (row == height - 1)
+        {
+            while (map->map[row][col] != '\0')
             {
                 if (map->map[0][col] != '1' || map->map[height - 1][col] != '1')
                     ft_error("The map is not surrounded by walls!");
@@ -124,10 +121,39 @@ void check_borders(t_map *map, int height)
     }
 }
 
+void check_width(t_map *map, int height)
+{
+    int row;
+    int col;
+    int width;
+
+    row = 0;
+    col = 0;
+    width = (ft_strlen(map->map[row] - 1));
+    while (map->map[row])
+    {
+        //printf("esto va valiendo width: %d y esto debería valer %d\n", ft_strlen(map->map[row] - 1), width);
+        if (ft_strlen(map->map[row] - 1) != width && row < height - 1)
+            ft_error("The map is not rectangular!");
+        if (row == height - 1 && ft_strlen(map->map[row] - 1) != (width - 1))
+            ft_error("The map is not rectangular!");
+        row++;
+    }
+}
+
 void map_checker(t_map *map, int height)
 {   
+    t_game *game = &map->game;
+    
+    check_width(map, height);
     check_borders(map, height);
     check_char(map, height);
     check_different(map, height);
+    //********AQUI ESTÁ EL FALLO. RESULTA QUE MAP NO LO COPIA COMO TAL PORQUE TAMBIÉN LO VA CAMBIANDO!! POR ESO AL CAMBIAR MAP Y PASARSELO A LA OTRA FUNCIÓN YA NO FUNCIONA***///
+    //map->map_copy = map->map;
+    //flood_fill_from_player(map, game->player_y, game->player_x);
+    //map->map_copy2 = map->map;
+    //flood_fill_from_exit(map, game->exit_row, game->exit_col);
+    //check_path(map);
     ft_init(map, height);
 }

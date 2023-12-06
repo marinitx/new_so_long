@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:11:58 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/04 18:52:01 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:51:13 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ typedef struct s_map {
     int     col;
     int     width;
     int     height;
+    char    **map_copy;
+    char    **map_copy2;
+    int     coins_copy;
+    int     coins_copy2;
     t_game  game;
 }   t_map;
 
@@ -71,5 +75,8 @@ void    print_floor_walls(t_map *map);
 void    check_different(t_map *map, int height);
 void    map_checker(t_map *map, int height);
 int    you_win(t_game *game);
+void	flood_fill_from_exit(t_map *map, int row, int col);
+void	flood_fill_from_player(t_map *map, int row, int col);
+void	check_path(t_map *map);
 
 #endif

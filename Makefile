@@ -6,11 +6,11 @@
 #    By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 17:54:21 by mhiguera          #+#    #+#              #
-#    Updated: 2023/12/04 20:04:56 by mhiguera         ###   ########.fr        #
+#    Updated: 2023/12/06 17:56:34 by mhiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =  ./src/so_long.c ./src/map_checker.c ./src/controls.c ./src/img.c ./src/utils.c ./src/map_read.c
+SRC =  ./src/so_long.c ./src/map_checker.c ./src/controls.c ./src/img.c ./src/utils.c ./src/map_read.c ./src/check_path.c
 
 OBJS = $(SRC:.c=.o)
 GNL_OBJS = $(GNL:.c=.o)
@@ -26,10 +26,6 @@ MLX = -L $(MLX_PATH) $(MLX_PATH)libmlx.a -lmlx -framework OpenGL -framework AppK
 LIBFT_DIR = ./libft/
 LIBFT_A = libft.a
 LIBFT = -L$(LIBFT_DIR) $(LIBFT_DIR)$(LIBFT_A)
-
-#FT_PRINTF_DIR = ./ft_printf/
-#FT_PRINTF_A = libftprintf.a
-#FT_PRINTF = -L$(FT_PRINTF_DIR) $(FT_PRINTF_DIR)$(FT_PRINTF_A)
 
 GNL = gnl/get_next_line.c gnl/get_next_line_utils.c
 

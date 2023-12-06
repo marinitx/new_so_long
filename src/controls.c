@@ -6,11 +6,12 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 11:32:47 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/04 19:24:09 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/06 13:48:58 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+#include "../libft/ft_printf.h"
 
 void go_up(t_map *map, t_game *game)
 {
@@ -25,7 +26,7 @@ void go_up(t_map *map, t_game *game)
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_y--;
 	game->movements++;
-	printf("Steps: %d\n", game->movements); // ************************** METER MI PROPIO PRINTF!!! *******
+	ft_printf("Steps: %d\n", game->movements); 
 	print_floor_walls(map);
 }
 
@@ -42,7 +43,7 @@ void go_down(t_map *map, t_game *game)
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_y++;
 	game->movements++;
-	printf("Steps: %d\n", game->movements);
+	ft_printf("Steps: %d\n", game->movements);
 	print_floor_walls(map);
 }
 
@@ -59,7 +60,7 @@ void go_left(t_map *map, t_game *game)
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_x--;
 	game->movements++;
-	printf("Steps: %d\n", game->movements);
+	ft_printf("Steps: %d\n", game->movements);
 	print_floor_walls(map);
 }
 
@@ -76,7 +77,7 @@ void go_right(t_map *map, t_game *game)
 	map->map[game->player_y][game->player_x] = '0';
 	game->player_x++;
 	game->movements++;
-	printf("Steps: %d\n", game->movements);
+	ft_printf("Steps: %d\n", game->movements);
 	print_floor_walls(map);
 }
 
