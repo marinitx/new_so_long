@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:11:27 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/11/24 15:03:38 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:46:39 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void ft_init(t_map *map, int height)
 {
 	int row;
 	int width;
-	char	*relative_path = "./xpm/frog.xpm";
 
 	row = 0;
 	width = (ft_strlen(map->map[row]) - 1);

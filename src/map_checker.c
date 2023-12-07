@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/06 18:41:15 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/07 18:16:05 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void check_char(t_map *map, int height)
     }
     game.coins = game.all_coins;
     map->coins_copy = game.all_coins;
-    map->coins_copy2 = game.all_coins;
     if (game.exit_count != 1)
         ft_error("Map not valid");
     if (game.player_count != 1)
@@ -134,9 +133,9 @@ void check_width(t_map *map, int height)
     {
         //printf("esto va valiendo width: %d y esto debería valer %d\n", ft_strlen(map->map[row] - 1), width);
         if (ft_strlen(map->map[row] - 1) != width && row < height - 1)
-            ft_error("The map is not rectangular!");
+            ft_error("The map is not rectangular! hola hola 1");
         if (row == height - 1 && ft_strlen(map->map[row] - 1) != (width - 1))
-            ft_error("The map is not rectangular!");
+            ft_error("The map is not rectangular! adios adios 2");
         row++;
     }
 }
@@ -147,13 +146,10 @@ void map_checker(t_map *map, int height)
     
     check_width(map, height);
     check_borders(map, height);
+    printf("hola\n");
     check_char(map, height);
     check_different(map, height);
-    //********AQUI ESTÁ EL FALLO. RESULTA QUE MAP NO LO COPIA COMO TAL PORQUE TAMBIÉN LO VA CAMBIANDO!! POR ESO AL CAMBIAR MAP Y PASARSELO A LA OTRA FUNCIÓN YA NO FUNCIONA***///
-    //map->map_copy = map->map;
-    //flood_fill_from_player(map, game->player_y, game->player_x);
-    //map->map_copy2 = map->map;
-    //flood_fill_from_exit(map, game->exit_row, game->exit_col);
-    //check_path(map);
+    flood_fill_from_player(map, game->player_y, game->player_x);
+    check_path(map);
     ft_init(map, height);
 }

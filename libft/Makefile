@@ -12,7 +12,7 @@ BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJS = $(SRC:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
-C = gcc -c
+C = cc -c
 FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 RM =  /bin/rm -f
@@ -22,9 +22,9 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 all: $(NAME) 
 
-bonus: $(OBJ) $(BONUS_OBJS)
+bonus: $(OBJ) $(NAME) $(BONUS_OBJS)
 	$(C) $(FLAGS) $(SRC)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(BONUS_OBJS)
 clean:
 	$(RM) $(OBJS) $(BONUS_OBJS)
 fclean: clean

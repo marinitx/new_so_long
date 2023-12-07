@@ -6,7 +6,7 @@
 #    By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 17:54:21 by mhiguera          #+#    #+#              #
-#    Updated: 2023/12/06 17:56:34 by mhiguera         ###   ########.fr        #
+#    Updated: 2023/12/07 18:28:03 by mhiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,9 @@ ALL_OBJS = $(OBJS) $(GNL_OBJS)
 
 CC = gcc
 
-CFLAGS = -g3 -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra  -fsanitize=address -g3
 
-MLX_PATH = mlx/
-MLX = -L $(MLX_PATH) $(MLX_PATH)libmlx.a -lmlx -framework OpenGL -framework AppKit
+MLX = -L libmlx.a -lmlx -framework OpenGL -framework AppKit
 
 LIBFT_DIR = ./libft/
 LIBFT_A = libft.a
@@ -39,16 +38,17 @@ all: $(NAME)
 
 $(NAME): $(ALL_OBJS)
 	@make bonus -C $(LIBFT_DIR)
-	@make -C $(MLX_PATH)
-	@$(CC) $(CFLAGS) $(ALL_OBJS) $(MLX) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(ALL_OBJS) $(MLX) $(LIBFT_DIR)$(LIBFT_A) -o $(NAME)
 	
 
 bonus: $(OBJ) $(BONUS_OBJS)
 	@$(C) $(FLAGS) $(SRC)
 	@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 clean:
-	@$(RM) $(OBJS) $(BONUS_OBJS)
+	@$(RM) $(OBJS) $(BONUS_OBJS) $(LIBFT)
+	@make clean -C $(LIBFT_DIR)
 fclean: clean
+	@make fclean -C $(LIBFT_DIR)
 	@$(RM) $(NAME) $(BONUS_OBJS) $(OBJS)
 re: fclean all
 .PHONY: all fclean clean re 
