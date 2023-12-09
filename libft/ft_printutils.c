@@ -6,11 +6,12 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:27:13 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/09 14:22:19 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/09 14:33:19 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "ft_printf.h"
 
 long	ft_pointertohexa(unsigned long num)
 {
