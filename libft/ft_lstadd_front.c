@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhiguera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:22:57 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/03/16 16:37:20 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/09 14:22:47 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (*lst != '\0' && new != '\0')
-	new->next = *lst;
+		new->next = *lst;
 	*lst = new;
 }
 /* Añade el nodo "new" al principio de la lista 'lst'.

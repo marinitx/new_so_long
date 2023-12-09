@@ -6,22 +6,22 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:11:27 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/07 17:46:39 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/09 12:45:40 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	game_over()
+int	game_over(void)
 {
 	exit(0);
 	return (0);
 }
 
-void ft_init(t_map *map, int height)
+void	ft_init(t_map *map, int height)
 {
-	int row;
-	int width;
+	int	row;
+	int	width;
 
 	row = 0;
 	width = (ft_strlen(map->map[row]) - 1);
@@ -38,14 +38,11 @@ void ft_init(t_map *map, int height)
 	mlx_loop(map->mlx);
 }
 
-
-int main (int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	if (argc == 2)
 		check_extension(argv[1]);
-
-    else
+	else
 		ft_error("\nInvalid number of arguments");
- 
-    return (0);
+	return (0);
 }

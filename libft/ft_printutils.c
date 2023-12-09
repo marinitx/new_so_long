@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printutils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhiguera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:27:13 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/07/05 14:45:00 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/09 14:22:19 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+
 #include <stdio.h>
 
 long	ft_pointertohexa(unsigned long num)
-{	
+{
 	int		len;
 	char	*str;
 
