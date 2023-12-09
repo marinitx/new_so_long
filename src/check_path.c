@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:21:37 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/09 12:35:17 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:37:17 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	check_path(t_map *map)
 
 	game = &map->game;
 	if (map->coins_copy > 0 || game->exit_count > 0)
-		ft_error("There is no valid path!");
+		ft_error("Error\nThere is no valid path!");
 }
 
 void	flood_fill_from_player(t_map *map, int row, int col)
@@ -29,7 +29,6 @@ void	flood_fill_from_player(t_map *map, int row, int col)
 	game = &map->game;
 	if (map->map_copy[row][col] != '1')
 	{
-		printf("Este es el valor de las coins: %d\n", map->coins_copy);
 		if (map->map_copy[row][col] == 'C')
 			map->coins_copy--;
 		if (map->map_copy[row][col] == 'E')

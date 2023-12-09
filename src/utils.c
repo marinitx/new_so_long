@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:57:32 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/09 14:22:00 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:38:40 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_borders(t_map *map, int height)
 			while (map->map[row][col] != '\n' && map->map[row][col] != '\0')
 			{
 				if (map->map[0][col] != '1' || map->map[height - 1][col] != '1')
-					ft_error("The map is not surrounded by walls! 1");
+					ft_error("Error\nThe map is not surrounded by walls! 1");
 				col++;
 			}
 		}
@@ -79,9 +79,9 @@ void	check_width(t_map *map, int height)
 	while (map->map[row])
 	{
 		if (ft_strlen(map->map[row] - 1) != width && row < height - 1)
-			ft_error("The map is not rectangular! hola hola 1");
+			ft_error("Error\nThe map is not rectangular! hola hola 1");
 		if (row == height - 1 && ft_strlen(map->map[row] - 1) != (width - 1))
-			ft_error("The map is not rectangular! adios adios 2");
+			ft_error("Error\nThe map is not rectangular! adios adios 2");
 		row++;
 	}
 }
