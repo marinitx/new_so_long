@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:53:07 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/09 15:38:20 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:37:08 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ void	check_height(char *argv)
 	char	*tmp;
 	int		height;
 
-	tmp = "holi";
-	height = -1;
+	height = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd <= 0)
 		ft_error("Error\nFailed to open file");
+	tmp = get_next_line(fd);
+	if (!tmp)
+		ft_error("Error\nEmpty map");
 	while (tmp)
 	{
 		height++;

@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/09 15:38:03 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:18:19 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,14 @@ void	check_borders2(t_map *map, int height, int row, int col)
 			while (map->map[row][col] != '\0')
 			{
 				if (map->map[0][col] != '1' || map->map[height - 1][col] != '1')
-					ft_error("Error\nThe map is not surrounded by walls!2");
+					ft_error("Error\nThe map is not surrounded by walls!");
 				col++;
 			}
 		}
 		if ((row > 0) && (row < height - 1))
 		{
 			if (map->map[row][0] != '1' || map->map[row][width - 1] != '1')
-				ft_error("Error\nThe map is not surrounded by walls!3");
+				ft_error("Error\nThe map is not surrounded by walls!");
 			col++;
 		}
 		if (row < height - 1)
