@@ -6,7 +6,7 @@
 #    By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 17:54:21 by mhiguera          #+#    #+#              #
-#    Updated: 2023/12/12 17:25:11 by mhiguera         ###   ########.fr        #
+#    Updated: 2023/12/12 17:28:32 by mhiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,6 @@ clean:
 	@make clean -C $(LIBFT_DIR)
 fclean: clean
 	@make fclean -C $(LIBFT_DIR)
-	@$(RM) $(NAME) $(BONUS_OBJS) $(OBJS)
+	@$(RM) $(NAME) $(BONUS_OBJS) $(OBJS) $(GNL_OBJS)
 re: fclean all
 .PHONY: all fclean clean re 
