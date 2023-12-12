@@ -6,7 +6,7 @@
 #    By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 17:54:21 by mhiguera          #+#    #+#              #
-#    Updated: 2023/12/07 18:28:03 by mhiguera         ###   ########.fr        #
+#    Updated: 2023/12/12 17:25:11 by mhiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra  -fsanitize=address -g3
 
-MLX = -L libmlx.a -lmlx -framework OpenGL -framework AppKit
+MLX = -lmlx -framework OpenGL -framework AppKit
 
 LIBFT_DIR = ./libft/
 LIBFT_A = libft.a
