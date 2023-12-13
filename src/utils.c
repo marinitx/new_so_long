@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:57:32 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/11 16:33:00 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/13 19:04:37 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	check_borders(t_map *map, int height)
 
 	row = 0;
 	col = 0;
-	
 	while (map->map[row][col] != '\0')
 	{
 		col = 0;
@@ -76,12 +75,12 @@ void	check_width(t_map *map, int height)
 
 	row = 0;
 	col = 0;
-	width = (ft_strlen(map->map[row] - 1));
+	width = (ft_strlen(map->map[row]) - 1);
 	while (map->map[row])
 	{
-		if (ft_strlen(map->map[row] - 1) != width && row < height - 1)
+		if (ft_strlen(map->map[row]) - 1 != width && row < height - 1)
 			ft_error("Error\nThe map is not rectangular!");
-		if (row == height - 1 && ft_strlen(map->map[row] - 1) != (width - 1))
+		if (row == height - 1 && ft_strlen(map->map[row]) - 1 != (width - 1))
 			ft_error("Error\nThe map is not rectangular!");
 		row++;
 	}
