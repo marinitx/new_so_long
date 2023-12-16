@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:57:32 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/13 19:04:37 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/16 12:41:44 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	you_win(t_game *game)
 
 	i = 0;
 	ft_printf("%s\n", "********************************************");
-	str = "You Won. Congrats!";
+	str = "You Won. Congrats!\n";
 	if (game->coins == 0)
 	{
-		write(1, str, 18);
+		write(1, str, 19);
 		exit(0);
 	}
 	return (0);
@@ -57,7 +57,7 @@ void	check_borders(t_map *map, int height)
 			while (map->map[row][col] != '\n' && map->map[row][col] != '\0')
 			{
 				if (map->map[0][col] != '1' || map->map[height - 1][col] != '1')
-					ft_error("Error\nThe map is not surrounded by walls!");
+					ft_error("Error\nThe map is not surrounded by walls!\n");
 				col++;
 			}
 		}
@@ -79,9 +79,9 @@ void	check_width(t_map *map, int height)
 	while (map->map[row])
 	{
 		if (ft_strlen(map->map[row]) - 1 != width && row < height - 1)
-			ft_error("Error\nThe map is not rectangular!");
+			ft_error("Error\nThe map is not rectangular!\n");
 		if (row == height - 1 && ft_strlen(map->map[row]) - 1 != (width - 1))
-			ft_error("Error\nThe map is not rectangular!");
+			ft_error("Error\nThe map is not rectangular!\n");
 		row++;
 	}
 }

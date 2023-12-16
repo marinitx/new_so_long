@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:53:03 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/11 16:18:19 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/16 12:39:32 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	check_different(t_map *map, int height, t_game *game)
 				(map->map[row][col] != 'C') &&
 				(map->map[row][col] != 'E' && map->map[row][col] != 'P') &&
 				(map->map[row][col] != '\n' && map->map[row][col] != '\0'))
-				ft_error("Error\nWrong characters on the map!");
+				ft_error("Error\nWrong characters on the map!\n");
 			col++;
 		}
 		row++;
@@ -92,7 +92,7 @@ void	check_char(t_map *map, int height, t_game *game)
 	}
 	check_char2(map, height, game);
 	if (game->player_count != 1 || game->exit_count != 1)
-		ft_error("Error\nMap not valid");
+		ft_error("Error\nMap not valid\n");
 }
 
 void	check_borders2(t_map *map, int height, int row, int col)
@@ -109,14 +109,14 @@ void	check_borders2(t_map *map, int height, int row, int col)
 			while (map->map[row][col] != '\0')
 			{
 				if (map->map[0][col] != '1' || map->map[height - 1][col] != '1')
-					ft_error("Error\nThe map is not surrounded by walls!");
+					ft_error("Error\nThe map is not surrounded by walls!\n");
 				col++;
 			}
 		}
 		if ((row > 0) && (row < height - 1))
 		{
 			if (map->map[row][0] != '1' || map->map[row][width - 1] != '1')
-				ft_error("Error\nThe map is not surrounded by walls!");
+				ft_error("Error\nThe map is not surrounded by walls!\n");
 			col++;
 		}
 		if (row < height - 1)

@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:39:25 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/13 19:00:38 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/16 12:39:39 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_sprites(char *relative_path, t_map *map, int col, int row)
 	game->img = mlx_xpm_file_to_image(map->mlx,
 			relative_path, &game->img_width, &game->img_height);
 	if (!game->img)
-		ft_error("Error\nFailed to load XPM files");
+		ft_error("Error\nFailed to load XPM files\n");
 	mlx_put_image_to_window(map->mlx, map->mlx_win, game->img,
 		col * 50, row * 50);
 }

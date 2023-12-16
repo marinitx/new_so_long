@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:53:07 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/11 16:37:08 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/16 12:39:06 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	check_height(char *argv)
 	height = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd <= 0)
-		ft_error("Error\nFailed to open file");
+		ft_error("Error\nFailed to open file\n");
 	tmp = get_next_line(fd);
 	if (!tmp)
-		ft_error("Error\nEmpty map");
+		ft_error("Error\nEmpty map\n");
 	while (tmp)
 	{
 		height++;
@@ -36,7 +36,7 @@ void	check_height(char *argv)
 	map.map = ft_calloc(sizeof(char *), (height + 1));
 	map.map_copy = ft_calloc(sizeof(char *), (height + 1));
 	if (!map.map)
-		ft_error("Error\nFile not found!");
+		ft_error("Error\nFile not found!\n");
 	close(fd);
 	read_map(argv, &map, height);
 }
@@ -49,7 +49,7 @@ void	read_map(char *argv, t_map *map, int height)
 	row = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
-		ft_error("Error\nCould not read the file!");
+		ft_error("Error\nCould not read the file!\n");
 	while (row < height)
 	{
 		map->map[row] = get_next_line(fd);
@@ -68,7 +68,7 @@ void	check_extension(char *argv)
 	start = ft_strlen(argv) - 4;
 	extension = ft_substr(argv, start, 4);
 	if (ft_strncmp(".ber", extension, 4) != 0)
-		ft_error("Error\nThe extension is not .ber!");
+		ft_error("Error\nThe extension is not .ber!\n");
 	else
 		check_height(argv);
 }
