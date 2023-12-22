@@ -6,7 +6,7 @@
 #    By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 17:54:21 by mhiguera          #+#    #+#              #
-#    Updated: 2023/12/13 19:07:49 by mhiguera         ###   ########.fr        #
+#    Updated: 2023/12/22 19:51:08 by mhiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ ALL_OBJS = $(OBJS) $(GNL_OBJS)
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra #-fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 

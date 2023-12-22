@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 11:32:47 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/13 19:03:07 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/22 19:34:44 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ void	go_up(t_map *map, t_game *game)
 	game->movements++;
 	ft_printf("Steps: %d\n", game->movements);
 	print_sprites("./xpm/water.xpm", map, game->player_x, game->player_y + 1);
+	if ((game->coins == 0) && (game->player_x == game->exit_col)
+		&& (game->player_y + 1 == game->exit_row))
+		print_sprites("./xpm/rock.xpm", map, game->exit_col, game->exit_row);
 	print_sprites("./xpm/frog.xpm", map, game->player_x, game->player_y);
 }
 
@@ -52,6 +55,9 @@ void	go_down(t_map *map, t_game *game)
 	game->movements++;
 	ft_printf("Steps: %d\n", game->movements);
 	print_sprites("./xpm/water.xpm", map, game->player_x, game->player_y - 1);
+	if ((game->coins == 0) && (game->player_x == game->exit_col)
+		&& (game->player_y - 1 == game->exit_row))
+		print_sprites("./xpm/rock.xpm", map, game->exit_col, game->exit_row);
 	print_sprites("./xpm/frog.xpm", map, game->player_x, game->player_y);
 }
 
@@ -73,6 +79,9 @@ void	go_left(t_map *map, t_game *game)
 	game->movements++;
 	ft_printf("Steps: %d\n", game->movements);
 	print_sprites("./xpm/water.xpm", map, game->player_x + 1, game->player_y);
+	if ((game->coins == 0) && (game->player_x + 1 == game->exit_col)
+		&& (game->player_y == game->exit_row))
+		print_sprites("./xpm/rock.xpm", map, game->exit_col, game->exit_row);
 	print_sprites("./xpm/frog.xpm", map, game->player_x, game->player_y);
 }
 
@@ -94,6 +103,9 @@ void	go_right(t_map *map, t_game *game)
 	game->movements++;
 	ft_printf("Steps: %d\n", game->movements);
 	print_sprites("./xpm/water.xpm", map, game->player_x - 1, game->player_y);
+	if ((game->coins == 0) && (game->player_x - 1 == game->exit_col)
+		&& (game->player_y == game->exit_row))
+		print_sprites("./xpm/rock.xpm", map, game->exit_col, game->exit_row);
 	print_sprites("./xpm/frog.xpm", map, game->player_x, game->player_y);
 }
 

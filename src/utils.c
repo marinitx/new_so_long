@@ -6,7 +6,7 @@
 /*   By: mhiguera <mhiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:57:32 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/12/16 12:41:44 by mhiguera         ###   ########.fr       */
+/*   Updated: 2023/12/22 20:11:13 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,22 @@ int	you_win(t_game *game)
 	return (0);
 }
 
+void	free_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	if (map->map)
+	{
+		while (map->map[i])
+		{
+			free(map->map[i]);
+			i++;
+		}
+		free(map->map);
+	}
+}
+
 void	ft_error(char *str)
 {
 	int	i;
@@ -42,7 +58,7 @@ void	ft_error(char *str)
 	exit(1);
 }
 
-void	check_borders(t_map *map, int height)
+void	check_borders(t_map *map)
 {
 	int	row;
 	int	col;
@@ -52,35 +68,36 @@ void	check_borders(t_map *map, int height)
 	while (map->map[row][col] != '\0')
 	{
 		col = 0;
-		if ((row == 0 || row == height - 1))
+		if ((row == 0 || row == map->height - 1))
 		{
 			while (map->map[row][col] != '\n' && map->map[row][col] != '\0')
 			{
-				if (map->map[0][col] != '1' || map->map[height - 1][col] != '1')
-					ft_error("Error\nThe map is not surrounded by walls!\n");
+				if (map->map[0][col] != '1'
+					|| map->map[map->height - 1][col] != '1')
+					ft_error("Error\nMap is not surrounded by walls!\n");
 				col++;
 			}
 		}
-		if (row < height - 1)
+		if (row < map->height - 1)
 			row++;
 	}
-	check_borders2(map, height, row, col);
+	check_borders2(map, row, col);
 }
 
-void	check_width(t_map *map, int height)
+void	check_width(t_map *map)
 {
 	int	row;
 	int	col;
-	int	width;
 
 	row = 0;
 	col = 0;
-	width = (ft_strlen(map->map[row]) - 1);
+	map->width = (ft_strlen(map->map[row]) - 1);
 	while (map->map[row])
 	{
-		if (ft_strlen(map->map[row]) - 1 != width && row < height - 1)
+		if (ft_strlen(map->map[row]) - 1 != map->width && row < map->height - 1)
 			ft_error("Error\nThe map is not rectangular!\n");
-		if (row == height - 1 && ft_strlen(map->map[row]) - 1 != (width - 1))
+		if (row == map->height - 1
+			&& ft_strlen(map->map[row]) - 1 != (map->width - 1))
 			ft_error("Error\nThe map is not rectangular!\n");
 		row++;
 	}
