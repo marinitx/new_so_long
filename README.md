@@ -26,3 +26,6 @@
   <li>Representa tantas moscas como quieras con "C".</li>
   <li>Cualquier otro carácter será inválido.</li>
 </ol>
+
+<h2>MLX</h2>
+<p>Es posible que el juego no funcione sin instalar MLX antes. Puedes instalarlo <a href="https://ml-explore.github.io/mlx/build/html/install.html">aquí</a></p>
