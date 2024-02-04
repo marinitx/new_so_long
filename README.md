@@ -2,7 +2,7 @@
 
 <h1>Instrucciones</h1>
 
-<p>Para comenzar, clona este repositorio y desde la terminal llama primero al ejecutable y luego al mapa que desees de entre los creados seguido de un espacio. <a href="#create">Si quieres puedes crear tu propio mapa.</a></p>
+<p>Para comenzar, clona este repositorio y desde la terminal llama primero al ejecutable y luego al mapa que desees de entre los creados seguido de un espacio. Si quieres puedes <a href="#create">crear tu propio mapa.</a></p>
 <img width="185" alt="solong" src="https://github.com/marinitx/so_long/assets/123256807/5a76f8e6-75fa-4d7c-833b-3acbaa3d3938">
 
 <p>El objetivo del jugador es recolectar todos los objetos presentes en el mapa y salir eligiendo la ruta más corta posible.</p>
